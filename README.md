@@ -18,4 +18,4 @@ Check out the [University of Auckland](https://www.auckland.ac.nz) website.
 
 A meme that captures how I currently feel about university:
 
-![]([https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif](https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMGNheGVqamhzZjN3N3FyY3l5NTB6ZHp1dXp3OTZhamNpODNxenUzcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jn93nzSiM2q0pO0mfr/200w.gif)
+![](https://c.tenor.com/8druEACXtX8AAAAd/tenor.gif)
