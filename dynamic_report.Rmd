@@ -49,10 +49,9 @@ win_count <- sum(latest_data$result == "Win")
 total_games <- nrow(latest_data)
 win_rate <- round((win_count / total_games) * 100, 1)
 mean_opponent <- round(mean(latest_data$opponent_rating), 0)
-```
 
-In total, **`r total_games`** games have been logged.
-My win rate is **`r win_rate`%**, with an average opponent rating of **`r mean_opponent`**.
+cat(paste0("In total, **", total_games, "** games have been logged. My win rate is **", win_rate, "%**, with an average opponent rating of **", mean_opponent, "**."))
+```
 
 ```{r}
 ggplot(latest_data, aes(x = result, fill = result)) +
