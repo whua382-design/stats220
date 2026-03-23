@@ -25,15 +25,13 @@ p {
 
 ## Chess Game Performance Tracker
 
-This report tracks my online chess games, analysing game results, 
+This report tracks my online chess games, analysing game results,
 how games ended, and opponent ratings over time.
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
 
-# Read in latest data
 logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRLmgMdVP3_3FXNkUobq4ejv-SANg5xMsBokWolY0ydoKgt16sfBkFhZM8RYQMjxrAGcCicsFot9W41/pub?output=csv")
 
-# Rename variables
 latest_data <- logged_data %>%
   rename(
     timestamp = Timestamp,
@@ -44,18 +42,15 @@ latest_data <- logged_data %>%
     time_remaining = `My remaining time at end of game.`
   )
 
-# Summary values
 win_count <- sum(latest_data$result == "Win")
 total_games <- nrow(latest_data)
 win_rate <- round((win_count / total_games) * 100, 1)
 mean_opponent <- round(mean(latest_data$opponent_rating), 0)
 ```
 
-In total, **`r total_games`** games have been logged. 
-My win rate is **`r win_rate`%**, with an average opponent 
-rating of **`r mean_opponent`**.
+In total, **`r total_games`** games have been logged.
+My win rate is **`r win_rate`%**, with an average opponent rating of **`r mean_opponent`**.
 ```{r}
-# Bar chart 1: game results
 ggplot(latest_data, aes(x = result, fill = result)) +
   geom_bar() +
   labs(title = "Chess Game Results",
@@ -65,7 +60,6 @@ ggplot(latest_data, aes(x = result, fill = result)) +
   theme(legend.position = "none")
 ```
 ```{r}
-# Bar chart 2: how games ended
 ggplot(latest_data, aes(x = ending, fill = ending)) +
   geom_bar() +
   labs(title = "How Games Ended",
