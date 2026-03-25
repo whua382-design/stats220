@@ -1,0 +1,67 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+```
+```{css}
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 5px;
+}
+p {
+  color: #333;
+}
+```
+
+## Chess Game Performance Tracker
+
+This report tracks my online chess games, analysing game results,
+how games ended, and opponent ratings over time.
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRLmgMdVP3_3FXNkUobq4ejv-SANg5xMsBokWolY0ydoKgt16sfBkFhZM8RYQMjxrAGcCicsFot9W41/pub?output=csv")
+
+latest_data <- logged_data %>%
+  rename(
+    timestamp = Timestamp,
+    result = `1. Game Results`,
+    color = Color,
+    ending = `How the game ended.`,
+    opponent_rating = `Opponent Rating`,
+    time_remaining = `My remaining time at end of game.`
+  )
+
+win_count <- sum(latest_data$result == "Win")
+total_games <- nrow(latest_data)
+win_rate <- round((win_count / total_games) * 100, 1)
+mean_opponent <- round(mean(latest_data$opponent_rating), 0)
+```
+
+In total, `r total_games` games have been logged. My win rate is `r win_rate`%, with an average opponent rating of `r mean_opponent`.
+```{r}
+ggplot(latest_data, aes(x = result, fill = result)) +
+  geom_bar() +
+  labs(title = "Chess Game Results",
+       x = "Result",
+       y = "Number of Games") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+```{r}
+ggplot(latest_data, aes(x = ending, fill = ending)) +
+  geom_bar() +
+  labs(title = "How Games Ended",
+       x = "Ending Type",
+       y = "Number of Games") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
