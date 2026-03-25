@@ -25,6 +25,7 @@ p {
 
 This report tracks my online chess games, analysing game results, how games ended, and opponent ratings over time.
 ```{r}
+if (!require(tidyverse)) install.packages("tidyverse")
 suppressPackageStartupMessages(library(tidyverse))
 
 logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vRLmgMdVP3_3FXNkUobq4ejv-SANg5xMsBokWolY0ydoKgt16sfBkFhZM8RYQMjxrAGcCicsFot9W41/pub?output=csv")
