@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Patterns from bullet chess games</title>
+
+<script src="visual_data_story_files/header-attrs-2.30/header-attrs.js"></script>
+<script src="visual_data_story_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="visual_data_story_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="visual_data_story_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="visual_data_story_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="visual_data_story_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="visual_data_story_files/navigation-1.1/tabsets.js"></script>
+<link href="visual_data_story_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="visual_data_story_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Patterns from bullet chess games</h1>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+$(function() {
+  $(".level2").css('visibility', 'hidden');
+  $(".level2").first().css('visibility', 'visible');
+  $(".container-fluid").height($(".container-fluid").height() + 300);
+  $(window).on('scroll', function() {
+    $('h2').each(function() {
+      var h2Top = $(this).offset().top - $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (h2Top >= 0 && h2Top <= windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'visible');
+      } else if (h2Top > windowHeight / 2) {
+        $(this).parent('div').css('visibility', 'hidden');
+      }
+    });
+  });
+})
+</script>
+<style type="text/css">
+.figcaption {
+  display: none;
+}
+
+body {
+  background-color: #f7fbff;
+  color: #2b2b2b;
+}
+
+.container-fluid {
+  max-width: 900px;
+}
+
+h1.title {
+  color: #8856a7;
+  font-weight: 700;
+}
+
+h2 {
+  color: #8856a7;
+  border-bottom: 4px solid #9ebcda;
+  padding-bottom: 0.25rem;
+}
+
+p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+img {
+  border: 6px solid #e0ecf4;
+  max-width: 100%;
+}
+
+a {
+  color: #8856a7;
+}
+</style>
+<div id="introducing-the-observations" class="section level2">
+<h2>Introducing the observations</h2>
+<p>This visual data story is based on logged bullet chess games. Each
+row records one game observation, including the result, whether I played
+White or Black, how the game ended, the opponent rating, the timestamp,
+and how much time I had left. The main question I wanted to explore was
+whether the fast time control created visible patterns in results,
+endings, and opponent strength.</p>
+<div class="float">
+<img src="plot1.png"
+alt="A stacked bar chart comparing bullet chess results when playing White and Black, showing the share of wins, draws, and losses for each colour." />
+<div class="figcaption">A stacked bar chart comparing bullet chess
+results when playing White and Black, showing the share of wins, draws,
+and losses for each colour.</div>
+</div>
+</div>
+<div id="colour-and-result" class="section level2">
+<h2>Colour and result</h2>
+<p>The first comparison looks at whether results changed depending on
+the colour I played. In chess, White moves first, so it is useful to
+compare White and Black games instead of only counting wins and losses
+overall. This plot helps show whether one colour led to a stronger
+result pattern in the logged games.</p>
+<div class="float">
+<img src="plot2.png"
+alt="A horizontal stacked bar chart showing how many bullet chess games ended by checkmate, resignation, timeout, or draw, split by game result." />
+<div class="figcaption">A horizontal stacked bar chart showing how many
+bullet chess games ended by checkmate, resignation, timeout, or draw,
+split by game result.</div>
+</div>
+</div>
+<div id="how-games-finished" class="section level2">
+<h2>How games finished</h2>
+<p>Bullet games can end in several different ways, and the ending type
+gives more detail than the result alone. Checkmate and resignation
+suggest decisive positions, while timeout shows the pressure of the
+clock. Comparing endings makes the story more specific because it shows
+not just whether the game was won or lost, but how the fast game reached
+that outcome.</p>
+<div class="float">
+<img src="plot3.png"
+alt="A jitter and boxplot chart comparing opponent rating across wins, draws, and losses in the logged bullet chess games." />
+<div class="figcaption">A jitter and boxplot chart comparing opponent
+rating across wins, draws, and losses in the logged bullet chess
+games.</div>
+</div>
+</div>
+<div id="opponent-strength" class="section level2">
+<h2>Opponent strength</h2>
+<p>The opponent rating plot adds another layer to the story. Instead of
+treating every result as equal, it shows the rating range of opponents
+linked to wins, draws, and losses. This helps show whether losses tended
+to happen against stronger opponents, or whether the results were more
+mixed across rating levels.</p>
+<div class="float">
+<img src="plot4.png"
+alt="A line chart using timestamps to show how wins, draws, and losses changed across the logged dates." />
+<div class="figcaption">A line chart using timestamps to show how wins,
+draws, and losses changed across the logged dates.</div>
+</div>
+</div>
+<div id="what-this-suggests" class="section level2">
+<h2>What this suggests</h2>
+<p>Overall, the logged bullet chess games show that results are shaped
+by several connected factors: colour, ending type, opponent rating, and
+time. The story is not only about the final result. It is also about the
+different ways short chess games unfold under time pressure, especially
+when games end by timeout, resignation, or checkmate.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
